@@ -1,0 +1,24 @@
+extends ../layouts/app.pug
+
+block content
+  // BEGIN
+  div.row.justify-content-md-center
+    div.col-md-9
+      table.table.border
+        tbody
+          tr
+            th.h3 Title
+          each post in posts
+            tr
+              td
+                div.row
+                  div.col
+                    a(href=`/posts/${post.id}`)=post.title
+                  div.col-md-auto
+                    a.btn.btn-info(href=`/posts/${post.id}/edit`) Edit
+                  div.col-md-auto
+                    form.form-inline.d-inline-block(action=`/posts/${post.id}?_method=DELETE` method='post')
+                      button.btn.btn-danger(type='submit') Delete
+
+
+  // END
